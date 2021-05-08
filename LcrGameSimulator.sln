@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LcrGame.Simulator.WPF", "LcrGame.Simulator.WPF\LcrGame.Simulator.WPF.csproj", "{3CB674EB-43DA-465C-A018-E2116284800E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LcrGame.Simulator.Domain", "LcrGame.Simulator.Domain\LcrGame.Simulator.Domain.csproj", "{581C3076-1610-4F12-AA07-182A971ADBD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LcrGame.Simulator.Application", "LcrGame.Simulator.Application\LcrGame.Simulator.Application.csproj", "{98CAFB3A-2F0C-4735-98CC-D578C9C24AEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3CB674EB-43DA-465C-A018-E2116284800E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CB674EB-43DA-465C-A018-E2116284800E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CB674EB-43DA-465C-A018-E2116284800E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{581C3076-1610-4F12-AA07-182A971ADBD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{581C3076-1610-4F12-AA07-182A971ADBD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{581C3076-1610-4F12-AA07-182A971ADBD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{581C3076-1610-4F12-AA07-182A971ADBD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98CAFB3A-2F0C-4735-98CC-D578C9C24AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98CAFB3A-2F0C-4735-98CC-D578C9C24AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98CAFB3A-2F0C-4735-98CC-D578C9C24AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98CAFB3A-2F0C-4735-98CC-D578C9C24AEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
