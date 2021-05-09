@@ -18,7 +18,10 @@ namespace LcrGame.Simulator.Application.Services
         public override int RunGame(int numberOfPlayers, int initialChipAmount = 3)
         {
             if (numberOfPlayers < _minPlayersNumber)
-                throw new NotSupportedNumberOfPlayersException($"The minimum number of players is 3. Number of players entered: {numberOfPlayers}");
+                throw new InvalidSimulatorArgumentsException($"The minimum number of players is 3. Number of players entered: {numberOfPlayers}");
+
+            if(initialChipAmount <= 0)
+                throw new InvalidSimulatorArgumentsException($"The minimum initial chip amount is 1. Initial chip amount entered: {initialChipAmount}");
 
             var players = new List<Player>();
             for (int i = 0; i < numberOfPlayers; i++)
@@ -84,8 +87,8 @@ namespace LcrGame.Simulator.Application.Services
 
         public override SimulatorOutput RunSetOfGames(int numberOfPlayers, int numberOfGames, int initialChipAmount = 3)
         {
-            if (numberOfPlayers < _minPlayersNumber)
-                throw new NotSupportedNumberOfPlayersException($"The minimum number of players is 3. Number of players entered: {numberOfPlayers}");
+            if (numberOfGames <= 0)
+                throw new InvalidSimulatorArgumentsException($"The minimum number of games is 1. Number of games entered: {numberOfGames}");
 
             var turnsSum = 0;
             var longestGameTurns = 0;
