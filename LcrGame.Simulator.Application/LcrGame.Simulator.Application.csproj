@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
+    <ProjectReference Include="..\LcrGame.Simulator.Domain\LcrGame.Simulator.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -20,7 +20,7 @@ namespace LcrGame.Simulator.Application.Services
 
         public IEnumerable<int> Generate(int start, int end, int count)
         {
-            for (int i = start; i <= end; i++)
+            for (int i = 0; i < count; i++)
             {
                 yield return _random.Next(start, end);
             }
