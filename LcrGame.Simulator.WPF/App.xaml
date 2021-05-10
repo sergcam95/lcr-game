@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LcrGame.Simulator.WPF"
              xmlns:viewmodels="clr-namespace:LcrGame.Simulator.WPF.ViewModels"
-             xmlns:views="clr-namespace:LcrGame.Simulator.WPF.Views"
-             StartupUri="MainWindow.xaml">
+             xmlns:views="clr-namespace:LcrGame.Simulator.WPF.Views">
     <Application.Resources>
         <ResourceDictionary>
 

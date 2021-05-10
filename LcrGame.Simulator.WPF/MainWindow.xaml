@@ -4,12 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LcrGame.Simulator.WPF"
-        xmlns:viewmodels="clr-namespace:LcrGame.Simulator.WPF.ViewModels"
         mc:Ignorable="d"
         Title="LCR Game Simulator" Height="250" Width="500">
-    <Window.DataContext>
-        <viewmodels:MainViewModel />
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />

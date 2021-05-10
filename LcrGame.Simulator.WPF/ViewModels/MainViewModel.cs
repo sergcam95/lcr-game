@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LcrGame.Simulator.Application.Interfaces;
 
 namespace LcrGame.Simulator.WPF.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        public BaseViewModel CurrentViewModel => new LcrGameSimulatorViewModel();
+        private readonly BaseViewModel _currentViewModel;
+        public MainViewModel(LcrGameSimulatorViewModel lcrGameSimulatorViewModel)
+        {
+            _currentViewModel = lcrGameSimulatorViewModel;
+        }
+
+        public BaseViewModel CurrentViewModel => _currentViewModel;
     }
 }

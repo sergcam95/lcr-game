@@ -1,4 +1,6 @@
-﻿using LcrGame.Simulator.WPF.Models;
+﻿using LcrGame.Simulator.Application.Interfaces;
+using LcrGame.Simulator.WPF.Commands;
+using System.Windows.Input;
 
 namespace LcrGame.Simulator.WPF.ViewModels
 {
@@ -28,7 +30,7 @@ namespace LcrGame.Simulator.WPF.ViewModels
             }
         }
 
-        private SimulatorResultViewModel _simulatorOutput;
+        private SimulatorResultViewModel _simulatorOutput = new();
 
         public SimulatorResultViewModel SimulatorOutput
         {
@@ -39,5 +41,12 @@ namespace LcrGame.Simulator.WPF.ViewModels
                 OnPropertyChanged(nameof(SimulatorOutput));
             }
         }
+
+        public LcrGameSimulatorViewModel(ILcrGameSimulator lcrGameSimulator)
+        {
+            RunSimulatorCommand = new RunSimulatorCommand(this, lcrGameSimulator);
+        }
+
+        public ICommand RunSimulatorCommand { get; set; }
     }
 }

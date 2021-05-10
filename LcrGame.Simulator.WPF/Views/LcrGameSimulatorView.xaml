@@ -18,10 +18,10 @@
 
                 <Label Content="Number of games: "  Margin="5 0" />
                 <TextBox Width="60" Text="{Binding GamesNumber, UpdateSourceTrigger=PropertyChanged}" />
-                
-                <Button Margin="25 0 0 0" Width="80" Content="Run" />
+
+                <Button Margin="25 0 0 0" Width="80" Content="Run" Command="{Binding RunSimulatorCommand}"/>
             </StackPanel>
-            
+
             <Border Grid.Row="1" Padding="10">
                 <local:LcrGameSimulatorResults DataContext="{Binding SimulatorOutput}"/>
             </Border>
