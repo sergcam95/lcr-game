@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="LcrGame.Simulator.WPF.Views.LcrGameSimulatorResults"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LcrGame.Simulator.WPF.Views"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="ResultNumber" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="48" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+        
+        <Style x:Key="ResultLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid Grid.Row="1" d:Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Average" Style="{StaticResource ResultLabel}" />
+            <TextBlock Text="{Binding AverageGame, FallbackValue=-}" Style="{StaticResource ResultNumber}" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Longest game" Style="{StaticResource ResultLabel}" />
+            <TextBlock Text="{Binding LongestGame,FallbackValue=-}" Style="{StaticResource ResultNumber}" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" VerticalAlignment="Center" Margin="10">
+            <TextBlock Text="Shortest game" Style="{StaticResource ResultLabel}" />
+            <TextBlock Text="{Binding ShortestGame, FallbackValue=-}" Style="{StaticResource ResultNumber}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

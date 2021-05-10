@@ -2,8 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LcrGame.Simulator.WPF"
+             xmlns:viewmodels="clr-namespace:LcrGame.Simulator.WPF.ViewModels"
+             xmlns:views="clr-namespace:LcrGame.Simulator.WPF.Views"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <DataTemplate DataType="{x:Type viewmodels:LcrGameSimulatorViewModel}">
+                <views:LcrGameSimulatorView />
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
