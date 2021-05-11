@@ -1,11 +1,18 @@
 ﻿using LcrGame.Simulator.Application.Interfaces;
 using LcrGame.Simulator.WPF.Commands;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace LcrGame.Simulator.WPF.ViewModels
 {
-    public class LcrGameSimulatorViewModel : BaseViewModel
+    public class LcrGameSimulatorViewModel : BaseViewModel, INotifyDataErrorInfo
     {
+        private readonly ErrorsViewModel _errorsViewModel;
+
         private int _playersNumber = 3;
 
         public int PlayersNumber
@@ -13,7 +20,14 @@ namespace LcrGame.Simulator.WPF.ViewModels
             get { return _playersNumber; }
             set 
             {
-                _playersNumber = value; 
+                _playersNumber = value;
+
+                _errorsViewModel.ClearErrors(nameof(PlayersNumber));
+                if(_playersNumber < 3)
+                {
+                    _errorsViewModel.AddError(nameof(PlayersNumber), "Minimum players are 3");
+                }
+
                 OnPropertyChanged(nameof(PlayersNumber));
             }
         }
@@ -26,6 +40,13 @@ namespace LcrGame.Simulator.WPF.ViewModels
             set
             {
                 _gamesNumber = value;
+
+                _errorsViewModel.ClearErrors(nameof(GamesNumber));
+                if (_gamesNumber <= 0)
+                {
+                    _errorsViewModel.AddError(nameof(GamesNumber), "Number of games should be at least 1");
+                }
+
                 OnPropertyChanged(nameof(GamesNumber));
             }
         }
@@ -45,8 +66,28 @@ namespace LcrGame.Simulator.WPF.ViewModels
         public LcrGameSimulatorViewModel(ILcrGameSimulator lcrGameSimulator)
         {
             RunSimulatorCommand = new RunSimulatorCommand(this, lcrGameSimulator);
+            
+            _errorsViewModel = new ErrorsViewModel();
+            _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
+        }
+
+        private void ErrorsViewModel_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
+        {
+            ErrorsChanged?.Invoke(this, e);
+            OnPropertyChanged(nameof(HasErrors));
         }
 
         public ICommand RunSimulatorCommand { get; set; }
+
+        public bool HasErrors => _errorsViewModel.HasErrors;
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return _errorsViewModel.GetErrors(propertyName);
+        }
+
+
     }
 }

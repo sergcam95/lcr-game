@@ -4,7 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:LcrGame.Simulator.WPF.Views"
+             xmlns:controls="clr-namespace:LcrGame.Simulator.WPF.Controls"
+             xmlns:converters="clr-namespace:LcrGame.Simulator.WPF.Converters"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <converters:NotOperatorValueConverter x:Key="NotOperatorValueConverter" />
+    </UserControl.Resources>
     <Border Padding="5" d:Background="White">
         <Grid>
             <Grid.RowDefinitions>
@@ -12,18 +17,40 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Label Content="Number of players: " Margin="5 0" />
-                <TextBox Width="60" Text="{Binding PlayersNumber, UpdateSourceTrigger=PropertyChanged}" />
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <Label Content="Number of games: "  Margin="5 0" />
-                <TextBox Width="60" Text="{Binding GamesNumber, UpdateSourceTrigger=PropertyChanged}" />
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
 
-                <Button Margin="25 0 0 0" Width="80" Content="Run" Command="{Binding RunSimulatorCommand}"/>
-            </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Label Content="Number of players: " Margin="0 0 5 0" Width="110"/>
+                        <TextBox Width="60" Text="{Binding PlayersNumber, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="5">
+                        <Label Content="Number of games: " Margin="0 0 5 0" Width="110" />
+                        <TextBox Width="60" Text="{Binding GamesNumber, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                </Grid>
+
+                <Button Grid.Column="1" 
+                        Margin="10" 
+                        Width="80" 
+                        Content="Run" 
+                        Command="{Binding RunSimulatorCommand}" 
+                        IsEnabled="{Binding HasErrors, Converter={StaticResource NotOperatorValueConverter}}"/>
+                
+            </Grid>
 
             <Border Grid.Row="1" Padding="10">
-                <local:LcrGameSimulatorResults DataContext="{Binding SimulatorOutput}"/>
+                <controls:LcrGameSimulatorResults DataContext="{Binding SimulatorOutput}"/>
             </Border>
         </Grid>
     </Border>
